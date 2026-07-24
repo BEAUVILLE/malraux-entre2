@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Sarlat | Le Malraux & L'Entre 2 — Gastronomie Périgourdine, Pizzeria, Brasserie</title>
+<meta name="description" content="Deux restaurants face à face au cœur de Sarlat-la-Canéda, Périgord Noir. Le Malraux : gastronomie périgourdine traditionnelle, foie gras, confit de canard. L'Entre 2 : brasserie, pizzeria, terrasse cathédrale. Réservations : 06 42 16 06 57 · 06 73 27 44 27.">
+<meta name="keywords" content="restaurant Sarlat, restaurant Sarlat-la-Canéda, pizzeria Sarlat, brasserie Sarlat, gastronomie Périgord, foie gras Sarlat, confit canard Sarlat, Le Malraux Sarlat, L'Entre 2 Sarlat, restaurant Dordogne, terrasse cathédrale Sarlat">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Le Malraux & L'Entre 2 — Sarlat-la-Canéda">
+<link rel="canonical" href="https://restaurant-entre2malraux.fr/">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Le Malraux & L'Entre 2 — Restaurants à Sarlat-la-Canéda">
+<meta property="og:description" content="Deux restaurants face à face au cœur de Sarlat. Gastronomie périgourdine, pizzeria artisanale, terrasse cathédrale.">
+<meta property="og:url" content="https://restaurant-entre2malraux.fr/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="photos/entre2-terrasse.jpg">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":"Restaurant","name":"Le Malraux","description":"Restaurant traditionnel périgordin au cœur de Sarlat-la-Canéda. Foie gras maison, confit de canard, menus 24,80€ et 34,90€.","address":{"@type":"PostalAddress","streetAddress":"17 Rue Albéric Cahuet","addressLocality":"Sarlat-la-Canéda","postalCode":"24200","addressCountry":"FR"},"telephone":"+33642160657","email":"lemalraux.sarlat@gmail.com","servesCuisine":["Périgordine","Française","Gastronomique"],"priceRange":"€€","sameAs":["https://www.instagram.com/lemalraux","https://www.facebook.com/RESTAURANTLEMALRAUX/","https://www.tripadvisor.com/Restaurant_Review-g196508-d10593566"]},{"@context":"https://schema.org","@type":"Restaurant","name":"L'Entre 2","description":"Brasserie et pizzeria face à la cathédrale Saint-Sacerdos de Sarlat-la-Canéda. Pizzas artisanales, foie gras IGP Périgord, 2 terrasses, menu 25,50€.","address":{"@type":"PostalAddress","streetAddress":"21 Rue Albéric Cahuet","addressLocality":"Sarlat-la-Canéda","postalCode":"24200","addressCountry":"FR"},"telephone":"+33673274427","servesCuisine":["Pizzeria","Brasserie","Périgordine"],"priceRange":"€€","sameAs":["https://www.instagram.com/l.entre2","https://www.facebook.com/Lentre2sarlat/"]}]
+</script>
+</head>
+<body class="malraux" id="body">
+<!-- FICHIER ÉDITABLE : styles dans style.css, comportement dans script.js, images dans photos/ -->
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-f" id="cuf" aria-hidden="true"></div>
+
+<div id="landing" role="dialog" aria-label="Choisir un restaurant">
+  <div class="land-half" id="land-malraux" onclick="enterSite('malraux')" role="button" tabindex="0" aria-label="Entrer sur le site du Malraux">
+    <div class="land-bg"></div><div class="land-ov"></div>
+    <div class="land-cnt">
+      <div class="land-tag">Sarlat · Périgord Noir</div>
+      <div class="land-name">Le<br><em>Malraux</em></div>
+      <div class="land-desc">Gastronomie périgourdine traditionnelle</div>
+      <span class="land-btn">Découvrir</span>
+    </div>
+  </div>
+  <div class="land-divider"><div class="land-vs">face à face</div></div>
+  <div class="land-half" id="land-entre2" onclick="enterSite('entre2')" role="button" tabindex="0" aria-label="Entrer sur le site de L'Entre 2">
+    <div class="land-bg"></div><div class="land-ov"></div>
+    <div class="land-cnt">
+      <div class="land-tag">Sarlat · Périgord Noir</div>
+      <div class="land-name">L'Entre<br><em>2</em></div>
+      <div class="land-desc">Brasserie · Pizzeria · Terrasse cathédrale</div>
+      <span class="land-btn">Découvrir</span>
+    </div>
+  </div>
+</div>
+
+<div id="switcher" role="navigation" aria-label="Changer de restaurant">
+  <button class="sw-half active" id="sw-malraux" aria-label="Le Malraux">
+    <div class="sw-dot"></div><span class="sw-label">Le Malraux</span>
+  </button>
+  <div class="sw-divider"></div>
+  <div class="sw-vs" aria-hidden="true">vs</div>
+  <button class="sw-half" id="sw-entre2" aria-label="L'Entre 2">
+    <span class="sw-label">L'Entre 2</span><div class="sw-dot"></div>
+  </button>
+</div>
+
+<nav id="nav" aria-label="Navigation principale">
+  <a href="#" class="nav-brand" onclick="return false" aria-label="Accueil">
+    <span class="nav-name" id="nav-name">Le Malraux</span>
+    <span class="nav-sub" id="nav-sub">Restaurant Traditionnel · Sarlat</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about-malraux" data-section="about">L'adresse</a></li>
+    <li><a href="#carte-malraux" data-section="carte">La carte</a></li>
+    <li><a href="#galerie-malraux" data-section="galerie">Galerie</a></li>
+    <li><a href="#infos-malraux" data-section="infos">Infos</a></li>
+  </ul>
+  <a href="tel:+33642160657" class="nav-tel" id="nav-tel">06 42 16 06 57</a>
+  <button class="burger" id="burgerBtn" onclick="document.getElementById('drawer').classList.add('open')" aria-label="Menu mobile" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="drawer" id="drawer" aria-label="Menu mobile">
+  <button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open')" aria-label="Fermer">✕</button>
+  <a href="#about-malraux" data-section="about" data-close-drawer="true">L'adresse</a>
+  <a href="#carte-malraux" data-section="carte" data-close-drawer="true">La carte</a>
+  <a href="#galerie-malraux" data-section="galerie" data-close-drawer="true">Galerie</a>
+  <a href="#infos-malraux" data-section="infos" data-close-drawer="true">Infos</a>
+</nav>
+
+<!-- ══ PAGE MALRAUX ══ -->
+<div class="page active" id="page-malraux">
+  <section class="hero" id="malraux-hero">
+    <div class="hero-bg" role="img" aria-label="Salle du restaurant Le Malraux"></div>
+    <div class="hero-ov" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="hero-cnt">
+      <div class="h-eye">Restaurant Traditionnel · Périgord</div>
+      <h1 class="h-title">Le<br><em>Malraux</em></h1>
+      <p class="h-sub">Sarlat-la-Canéda · Dordogne</p>
+      <div class="h-orn" aria-hidden="true"><span></span><i></i><span></span></div>
+      <div class="h-btns">
+        <a href="tel:+33642160657" class="btn btn-gold">Réserver — 06 42 16 06 57</a>
+        <a href="#carte-malraux" class="btn btn-ghost">Voir la carte</a>
+      </div>
+    </div>
+    <div class="h-scroll" aria-hidden="true">Découvrir</div>
+  </section>
+
+  <div class="bandeau">
+    <div class="bi"><div class="bi-val">Périgord Noir</div><div class="bi-lbl">Terroir authentique</div></div>
+    <div class="bi"><div class="bi-val">Tout Fait Maison</div><div class="bi-lbl">Cuisine du marché</div></div>
+    <div class="bi"><div class="bi-val">24,80€ · 34,90€</div><div class="bi-lbl">Menus complets</div></div>
+    <div class="bi"><div class="bi-val">Terrasse fleurie</div><div class="bi-lbl">Cadre de charme</div></div>
+    <div class="bi"><div class="bi-val">Traiteur</div><div class="bi-lbl">Événements & groupes</div></div>
+  </div>
+
+  <section class="about" id="about-malraux">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-imgs">
+          <div class="about-badge"><div class="badge-n">17</div><div class="badge-t">Rue Albéric Cahuet</div></div>
+          <!-- REMPLACEZ PAR VOS PHOTOS : dossier photos/ -->
+          <img class="about-main" src="photos/malraux-salle.jpg" alt="Salle du restaurant Le Malraux à Sarlat-la-Canéda" loading="lazy" width="700" height="875">
+          <img class="about-inset" src="photos/malraux-cuisine.jpg" alt="Cuisine du Malraux, foie gras et spécialités périgordines" loading="lazy" width="400" height="400">
+        </div>
+        <div>
+          <span class="lbl">Notre histoire</span>
+          <h2 class="titre">Une cuisine <em>du cœur</em><br>en Périgord Noir</h2>
+          <div class="filet"></div>
+          <p class="texte">Niché au cœur de Sarlat-la-Canéda, Le Malraux est une adresse qui célèbre la gastronomie périgourdine dans toute son authenticité. Foie gras, confit de canard, noix du Périgord... chaque assiette raconte l'histoire d'un terroir généreux, préparée avec les produits du marché.</p>
+          <p class="texte" style="margin-top:1rem">Terrasse fleurie en été, salle chaleureuse en hiver — Le Malraux est le lieu idéal pour un déjeuner en famille, un dîner romantique ou un repas entre amis.</p>
+          <div class="feats">
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🦆</span><div><div class="feat-t">Foie Gras Maison</div><p>Partenaire Layrisse Foie Gras, IGP Périgord</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🌿</span><div><div class="feat-t">Produits Locaux</div><p>Marché de Sarlat & producteurs partenaires</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🎂</span><div><div class="feat-t">Service Traiteur</div><p>Mariages, groupes et événements privés</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🏡</span><div><div class="feat-t">Terrasse & Jardin</div><p>Cadre fleuri au cœur de la cité médiévale</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE LE MALRAUX — menus réels issus du PDF -->
+  <section class="carte-s" id="carte-malraux">
+    <div class="container">
+      <div class="carte-head reveal">
+        <span class="lbl" style="display:block;text-align:center">Nos saveurs</span>
+        <h2 class="titre" style="text-align:center">La <em>Carte</em></h2>
+      </div>
+      <div class="ctabs reveal d1" role="tablist">
+        <button class="ctab" onclick="ctab('m-menu0',this)" aria-selected="false">Menu 21,80€</button>
+        <button class="ctab on" onclick="ctab('m-menu1',this)" aria-selected="true">Menu 24,80€</button>
+        <button class="ctab" onclick="ctab('m-menu2',this)" aria-selected="false">Menu 35,00€</button>
+        <button class="ctab" onclick="ctab('m-carte',this)" aria-selected="false">À la carte</button>
+        <button class="ctab" onclick="ctab('m-specialites',this)" aria-selected="false">Assiettes Spécialités</button>
+      </div>
+
+      <div class="cpanel" id="m-menu0">
+        <div class="menu-formule reveal">
+          <div class="formule-prix">21,80€</div>
+          <div class="formule-detail">Entrée + Plat + Dessert · Prix nets TTC<br>Tous nos plats accompagnés de pommes de terre à la sarladaise</div>
+        </div>
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Entrées</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Foie gras de canard mi-cuit fait maison</div><div class="mi-desc">Et son chutney d'oignons</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Pâté façon Périgourdin</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade de gésiers d'oie</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade de cabécou et ses noix du Périgord</div></div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Plats</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Aiguillette de canard sauce cèpes</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Parmentier de canard fait maison</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Camembert rôti, jambon cru du Périgord</div><div class="mi-desc">Frites, salade (+1,50€)</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Anchaud Périgourdin</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coq au vin de Bergerac fait maison</div></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Dessert</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Dessert au choix sur la carte</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cpanel on" id="m-menu1">
+        <div class="menu-formule reveal">
+          <div class="formule-prix">24,80€</div>
+          <div class="formule-detail">Entrée + Plat + Dessert · Prix nets TTC<br>Tous nos plats accompagnés de pommes de terre à la sarladaise sauf le tartare de saumon qui est accompagné de frites</div>
+        </div>
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Entrées</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Carpaccio de bœuf fait maison</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Foie gras de canard mi-cuit fait maison</div><div class="mi-desc">Et son chutney d'oignons</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade sarladaise</div><div class="mi-desc">Salade, tomate, gésiers d'oie, magret séché</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade de cabécou et ses noix du Périgord</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Escalope de foie gras poêlée et sa sauce Malraux</div><div class="mi-desc">(+2,50€)</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Jambon du Périgord</div></div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Plats</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Demi-magret de canard sauce Malraux</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Confit de canard</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Pièce de bœuf</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartare de saumon-avocat fait maison</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coq au vin de Bergerac fait maison</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Cassoulet Périgourdin au confit de canard</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Camembert rôti, jambon cru du Périgord</div><div class="mi-desc">Frites, salade (option végé possible)</div></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Dessert</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Dessert au choix sur la carte</div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Supplément Rossini sur nos plats 5,00€</p>
+      </div>
+
+      <div class="cpanel" id="m-menu2">
+        <div class="menu-formule reveal">
+          <div class="formule-prix">35,00€</div>
+          <div class="formule-detail">Entrée + Plat + Dessert · Prix nets TTC · Produits premium<br>Tous nos plats accompagnés de pommes de terre à la sarladaise sauf le saumon qui est accompagné de purée maison</div>
+        </div>
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Entrées premium</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Duo de foie gras de canard</div><div class="mi-desc">Foie gras de canard mi-cuit et escalope de foie gras poêlée (+2,50€)</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Périgourdine</div><div class="mi-desc">Salade, tomate, gésiers d'oie, magret de canard séché, foie gras de canard mi-cuit fait maison et ses noix du Périgord</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartare de saumon fait maison</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tomate d'antan, burrata, huile de truffe</div></div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Plats de caractère</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Duo de canard</div><div class="mi-desc">Demi-magret de canard et aiguillettes de canard, sauce cèpes</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Filet de bœuf, escalope de foie gras poêlée</div><div class="mi-desc">Sauce truffe (+5€)</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Saumon sauce vierge</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Côtelette d'Agneau sauce du chef</div></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Dessert</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Dessert au choix sur la carte</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cpanel" id="m-carte">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Foies Gras</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Foie gras de canard mi-cuit fait maison</div></div><div class="mi-price">19,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Escalope de foie gras de canard sauce Malraux</div></div><div class="mi-price">21,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Duo de foie gras de canard</div><div class="mi-desc">Foie gras de canard mi-cuit et escalope de foie gras poêlée</div></div><div class="mi-price">24,00€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Omelettes</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Cèpes</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Truffe</div></div><div class="mi-price">24,00€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Burgers (servis avec frites maison)</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Burger Classic</div><div class="mi-desc">Pain burger, steak haché, cheddar, salade, tomate, sauce burger</div></div><div class="mi-price">17,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Burger Royal</div><div class="mi-desc">Pain burger artisanal, steak haché, cabécou, salade, tomate, chutney d'oignon, sauce burger</div></div><div class="mi-price">19,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Burger Végétarien</div><div class="mi-desc">Pain artisanal, steak végé, salade, tomate, sauce burger</div></div><div class="mi-price">19,00€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Plats à la Carte</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coq au vin de Bergerac fait maison</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Parmentier de canard fait maison</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Cassoulet Périgourdin au confit de canard</div></div><div class="mi-price">18,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Duo de canard magret aiguillettes sauce aux cèpes</div></div><div class="mi-price">21,00€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Grandes Salades</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Rocamadour</div><div class="mi-desc">Salade verte, tomate, cabécou du Périgord, noix</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Italienne</div><div class="mi-desc">Salade verte, tomate, burrata, jambon noir du Périgord, huile de truffe</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Périgourdine</div><div class="mi-desc">Salade verte, tomate, magret de canard séché, gésiers d'oie, foie gras de canard mi-cuit fait maison, noix</div></div><div class="mi-price">21,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Royale</div><div class="mi-desc">Salade verte, tomate, cabécou du Périgord, foie gras de canard mi-cuit, jambon noir du Périgord</div></div><div class="mi-price">21,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La César revisitée</div><div class="mi-desc">Mesclun, crousti de poulet, croûtons de pain, copeaux de parmesan et sauce blanche</div></div><div class="mi-price">17,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Fraîcheur</div><div class="mi-desc">Salade mesclun, jambon sec, melon, pastèque, oignon frit, tomate</div></div><div class="mi-price">16,50€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Desserts</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Cabécou du Périgord</div></div><div class="mi-price">7,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gâteau aux noix du Périgord</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Dessert au chocolat du moment</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Panna cotta du moment</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coupe de fruits du moment (été seulement)</div></div><div class="mi-price">7,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Café gourmand</div></div><div class="mi-price">10,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coupe de glace</div><div class="mi-desc">Dame blanche, chocolat liégeois, café liégeois</div></div><div class="mi-price">10,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Coupe Colonel</div></div><div class="mi-price">10,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">1 boule de glace</div></div><div class="mi-price">3,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">2 boules de glace</div></div><div class="mi-price">5,50€</div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Prix nets TTC · Les desserts ci-dessus sont disponibles avec un supplément de 5€ pour les menus</p>
+      </div>
+
+      <div class="cpanel" id="m-specialites">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Assiettes Spécialités</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Jacquou</div><div class="mi-desc">Magret de canard entier, pommes de terre sarladaises, sauce truffe du chef, foie gras de canard fait maison</div></div><div class="mi-price">32,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Rossini</div><div class="mi-desc">Filet de bœuf, escalope de foie gras poêlée façon Rossini, sauce Truffe</div></div><div class="mi-price">29,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Cyrano</div><div class="mi-desc">Confit de canard, pommes de terre sarladaises, sauce truffe, foie gras de canard fait maison</div></div><div class="mi-price">22,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Montaigne</div><div class="mi-desc">Salade verte, tomate, jambon noir du Périgord, pommes de terre sarladaises</div></div><div class="mi-price">15,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Lagreze</div><div class="mi-desc">Anchaud périgourdin froid, pommes de terre sarladaises, cabécou</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Nordique</div><div class="mi-desc">Tartare de saumon, avocat, salade verte, frites</div></div><div class="mi-price">18,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Boétie</div><div class="mi-desc">Pièce de bœuf, sauce truffe, pommes de terre sarladaises</div></div><div class="mi-price">19,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Malraux</div><div class="mi-desc">Confit de canard sauce cèpes, pommes de terre à la sarladaise, salade de gésiers, cabécou, pâté Périgourdin</div></div><div class="mi-price">21,50€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">&nbsp;</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Camembert rôti</div><div class="mi-desc">Camembert rôti, jambon du Périgord, frites</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Fish</div><div class="mi-desc">Fish and chips, sauce tartare</div></div><div class="mi-price">16,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Pêcheur</div><div class="mi-desc">Saumon sauce vierge, purée maison</div></div><div class="mi-price">20,50€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Menu Enfant</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Menu enfant</div><div class="mi-desc">Tenders de poulet, Anchaud Périgourdin ou Jambon blanc · Frites ou pommes de terre à la sarladaise · Gâteau chocolat ou 1 boule de glace vanille ou chocolat</div></div><div class="mi-price">11,50€</div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Prix nets TTC · Tous nos plats sont accompagnés de pommes de terre à la sarladaise</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gal-s" id="galerie-malraux">
+    <div class="gal-head container reveal">
+      <span class="lbl" style="display:block;text-align:center">En images</span>
+      <h2 class="titre" style="text-align:center">L'<em>ambiance</em> Malraux</h2>
+    </div>
+    <div class="gal-grid gal-grid-5">
+      <div class="gi g1"><img src="photos/malraux-gal1.jpg" alt="Cassoulet périgourdin au confit de canard, Le Malraux" loading="lazy" width="600" height="400"></div>
+      <div class="gi g2"><img src="photos/malraux-gal2.jpg" alt="Carré d'agneau sauce du chef, Le Malraux" loading="lazy" width="600" height="400"></div>
+      <div class="gi g3"><img src="photos/malraux-gal3.jpg" alt="Pièce de bœuf sauce cèpes pommes sarladaises" loading="lazy" width="600" height="400"></div>
+      <div class="gi g4"><img src="photos/malraux-gal4.jpg" alt="Tartare de saumon avocat frites maison, Le Malraux" loading="lazy" width="600" height="400"></div>
+      <div class="gi g5"><img src="photos/malraux-gal5.jpg" alt="Omelette aux cèpes, Le Malraux Sarlat" loading="lazy" width="600" height="400"></div>
+    </div>
+  </section>
+
+  <section class="infos-s" id="infos-malraux">
+    <div class="infos-grid">
+      <div class="reveal">
+        <div class="info-t">Nous trouver</div>
+        <address class="info-addr">17 Rue Albéric Cahuet<br>24200 Sarlat-la-Canéda<br>Dordogne — Périgord Noir</address>
+        <a href="tel:+33642160657" class="info-tel-big">06 42 16 06 57</a>
+        <div class="info-note">Réservations uniquement par téléphone</div>
+        <div class="info-email"><a href="mailto:lemalraux.sarlat@gmail.com">lemalraux.sarlat@gmail.com</a></div>
+        <div class="map-wrap">
+          <iframe src="https://maps.google.com/maps?q=17+Rue+Alb%C3%A9ric+Cahuet+Sarlat-la-Can%C3%A9da+24200&output=embed" title="Le Malraux — 17 Rue Albéric Cahuet Sarlat" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="info-t">Horaires d'ouverture</div>
+        <ul class="hours">
+          <li><span class="jour">Lundi</span><span class="heure ferme">Fermé</span></li>
+          <li><span class="jour">Mardi</span><span class="heure">11h45–14h · 18h45–21h</span></li>
+          <li><span class="jour">Mercredi</span><span class="heure">11h45–14h · 18h45–21h</span></li>
+          <li><span class="jour">Jeudi</span><span class="heure">11h45–14h · 18h45–21h</span></li>
+          <li><span class="jour">Vendredi</span><span class="heure">11h45–14h · 18h45–21h</span></li>
+          <li><span class="jour">Samedi</span><span class="heure">11h45–14h · 18h45–21h</span></li>
+          <li><span class="jour">Dimanche</span><span class="heure">11h45–14h uniquement</span></li>
+        </ul>
+        <p class="hours-note">En basse saison : ouvert Mar–Sam. Horaires susceptibles de varier.</p>
+        <div class="moyens">
+          <span class="moyen">💳 CB</span><span class="moyen">🏦 Chèques</span><span class="moyen">💵 Espèces</span><span class="moyen">🏖️ Ch. Vacances</span><span class="moyen">🍽️ Ticket Restaurant</span>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="info-t">Retrouvez-nous</div>
+        <div class="liens">
+          <a href="https://www.instagram.com/lemalraux" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">📸</div>@lemalraux sur Instagram</a>
+          <a href="https://www.facebook.com/RESTAURANTLEMALRAUX/" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">f</div>Facebook — Le Malraux</a>
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g196508-d10593566-Reviews-Le_Malraux-Sarlat_la_Caneda_Dordogne_Nouvelle_Aquitaine.html" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">🦉</div>TripAdvisor</a>
+          <a href="https://maps.google.com/?q=Le+Malraux+Sarlat" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">📍</div>Google Maps</a>
+        </div>
+        <div class="info-extras">
+          🅿️ Parking Jean-Joseph Escande · 219m<br>
+          ♿ Accessible PMR · 🐾 Animaux bienvenus<br>
+          👨‍👩‍👧 Familles & enfants · 🎂 Traiteur<br>
+          🌿 Partenaire <strong style="opacity:.7">Layrisse Foie Gras</strong> — IGP Périgord
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="qr-s" id="qr-malraux" aria-labelledby="qr-title-malraux">
+    <div class="qr-inner reveal">
+      <div class="qr-copy">
+        <span class="lbl">Accès direct</span>
+        <h2 class="titre" id="qr-title-malraux">Scannez le <em>QR officiel</em></h2>
+        <p class="texte">Accédez au site commun de L’Entre 2 et du Malraux pour consulter les cartes, les photos et les informations pratiques.</p>
+        <div class="qr-actions">
+          <a class="btn btn-gold" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer">Ouvrir le site</a>
+          <button class="btn btn-ghost qr-share" type="button" onclick="shareOfficialSite(this)">Partager le lien</button>
+        </div>
+        <a class="qr-url" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer">restaurant-entre2malraux.fr</a>
+      </div>
+      <a class="qr-card" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site officiel L'Entre 2 et Le Malraux">
+        <span class="qr-kicker">Scannez ici</span>
+        <img src="qr-site.png" alt="QR code vers le site officiel restaurant-entre2malraux.fr" width="900" height="900">
+        <span class="qr-note">QR cliquable · Site officiel</span>
+      </a>
+    </div>
+  </section>
+
+
+  <section class="cta-s">
+    <div class="cta-inner reveal">
+      <span class="lbl" style="display:block;text-align:center">Une envie ?</span>
+      <h2 class="titre" style="text-align:center">Réservez votre <em>table</em></h2>
+      <p class="texte" style="text-align:center;margin:0 auto">Déjeuner en terrasse fleurie, dîner romantique ou repas en famille — réservation uniquement par téléphone.</p>
+      <div class="cta-tel-wrap">
+        <span class="cta-tel-lbl">Appelez-nous</span>
+        <a href="tel:+33642160657" class="cta-tel-num">06 42 16 06 57</a>
+        <span class="cta-sub">Réservations uniquement par téléphone</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bridge-s">
+    <div class="bridge-inner reveal">
+      <div class="bridge-eyelet">Juste en face · même rue</div>
+      <div class="bridge-title">Envie d'une autre <em>atmosphère</em> ?</div>
+      <button class="bridge-card" onclick="switchSite('entre2')" aria-label="Découvrir L'Entre 2">
+        <div class="bridge-card-label">Découvrir aussi</div>
+        <div class="bridge-card-name">L'Entre 2</div>
+        <div class="bridge-card-sub">Brasserie · Pizzeria · Terrasse cathédrale</div>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-grid">
+      <div>
+        <span class="f-logo">Le Malraux</span>
+        <span class="f-sub">Restaurant Traditionnel · Sarlat · Périgord Noir</span>
+        <p class="f-bio">Gastronomie périgourdine au cœur de Sarlat-la-Canéda. Foie gras, confit de canard, produits locaux — un voyage au cœur du Périgord Noir.</p>
+      </div>
+      <div class="f-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#about-malraux" data-section="about">L'adresse</a></li>
+          <li><a href="#carte-malraux" data-section="carte">La carte</a></li>
+          <li><a href="#galerie-malraux" data-section="galerie">Galerie</a></li>
+          <li><a href="#infos-malraux">Infos pratiques</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Contact</h5>
+        <p>17 Rue Albéric Cahuet<br>24200 Sarlat-la-Canéda<br><br><a href="tel:+33642160657">06 42 16 06 57</a><br><a href="mailto:lemalraux.sarlat@gmail.com">lemalraux.sarlat@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-copy">© 2025 Le Malraux · Sarlat-la-Canéda · Prix nets TTC</p>
+      <div class="f-socials">
+        <a href="https://www.instagram.com/lemalraux" target="_blank" rel="noopener noreferrer" class="f-soc" aria-label="Instagram Le Malraux">📸</a>
+        <a href="https://www.facebook.com/RESTAURANTLEMALRAUX/" target="_blank" rel="noopener noreferrer" class="f-soc" aria-label="Facebook Le Malraux">f</a>
+        <a href="https://www.tripadvisor.com/Restaurant_Review-g196508-d10593566-Reviews-Le_Malraux-Sarlat_la_Caneda_Dordogne_Nouvelle_Aquitaine.html" target="_blank" rel="noopener noreferrer" class="f-soc" aria-label="TripAdvisor Le Malraux">🦉</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══ PAGE L'ENTRE 2 ══ -->
+<div class="page" id="page-entre2">
+  <section class="hero" id="entre2-hero">
+    <div class="hero-bg" role="img" aria-label="Terrasse de L'Entre 2 face à la cathédrale de Sarlat"></div>
+    <div class="hero-ov" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="hero-cnt">
+      <div class="h-eye">Brasserie · Pizzeria · Périgord</div>
+      <h1 class="h-title">L'Entre<br><em>2</em></h1>
+      <p class="h-sub">Face à la Cathédrale Saint-Sacerdos · Sarlat</p>
+      <div class="h-orn" aria-hidden="true"><span></span><i></i><span></span></div>
+      <div class="h-btns">
+        <a href="tel:+33673274427" class="btn btn-gold">Réserver — 06 73 27 44 27</a>
+        <a href="#carte-entre2" class="btn btn-ghost">Voir la carte</a>
+      </div>
+    </div>
+    <div class="h-scroll" aria-hidden="true">Découvrir</div>
+  </section>
+
+  <div class="bandeau">
+    <div class="bi"><div class="bi-val">Face cathédrale</div><div class="bi-lbl">Vue imprenable</div></div>
+    <div class="bi"><div class="bi-val">Pizzas artisanales</div><div class="bi-lbl">Faites maison</div></div>
+    <div class="bi"><div class="bi-val">Foie gras maison</div><div class="bi-lbl">IGP Périgord</div></div>
+    <div class="bi"><div class="bi-val">2 terrasses</div><div class="bi-lbl">Plein air & ombragée</div></div>
+    <div class="bi"><div class="bi-val">7j/7 en été</div><div class="bi-lbl">Service non-stop</div></div>
+  </div>
+
+  <section class="about" id="about-entre2">
+    <div class="container">
+      <div class="about-grid about-text-first reveal">
+        <div>
+          <span class="lbl">Notre adresse</span>
+          <h2 class="titre">La brasserie du <em>cœur</em><br>de Sarlat</h2>
+          <div class="filet"></div>
+          <p class="texte">L'Entre 2 s'installe là où Sarlat est le plus beau — face à la cathédrale Saint-Sacerdos, au carrefour des ruelles médiévales. Brasserie conviviale le midi, pizzeria festive le soir, L'Entre 2 accueille familles, groupes et amoureux du Périgord autour d'une cuisine généreuse et sincère.</p>
+          <p class="texte" style="margin-top:1rem">Pizzas artisanales maison, foie gras IGP Périgord, grande carte brasserie — ici, chaque repas devient une fête au cœur de la cité médiévale.</p>
+          <div class="feats">
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🍕</span><div><div class="feat-t">Pizzas Artisanales</div><p>Pâte maison, garnitures fraîches</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🦆</span><div><div class="feat-t">Foie Gras IGP Périgord</div><p>100% maison, label d'origine garantie</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">☀️</span><div><div class="feat-t">2 Terrasses Panoramiques</div><p>Vue cathédrale Saint-Sacerdos</p></div></div>
+            <div class="feat"><span class="feat-icon" aria-hidden="true">🎉</span><div><div class="feat-t">Groupes Bienvenus</div><p>Menus de groupe, réservations longue date</p></div></div>
+          </div>
+        </div>
+        <div class="about-imgs">
+          <div class="about-badge"><div class="badge-n">21</div><div class="badge-t">Rue Albéric Cahuet</div></div>
+          <!-- REMPLACEZ PAR VOS PHOTOS -->
+          <img class="about-main" src="photos/entre2-terrasse.jpg" alt="Terrasse de L'Entre 2 face à la cathédrale Saint-Sacerdos de Sarlat" loading="lazy" width="700" height="875">
+          <img class="about-inset" src="photos/entre2-pizza.jpg" alt="Pizza artisanale L'Entre 2 à Sarlat" loading="lazy" width="400" height="400">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE L'ENTRE 2 — menus réels issus du PDF -->
+  <section class="carte-s" id="carte-entre2">
+    <div class="container">
+      <div class="carte-head reveal">
+        <span class="lbl" style="display:block;text-align:center">Nos créations</span>
+        <h2 class="titre" style="text-align:center">La <em>Carte</em></h2>
+      </div>
+      <div class="ctabs reveal d1" role="tablist">
+        <button class="ctab on" onclick="ctab('e-menu',this)" aria-selected="true">Menu 25,50€</button>
+        <button class="ctab" onclick="ctab('e-entrees',this)" aria-selected="false">Entrées & Salades</button>
+        <button class="ctab" onclick="ctab('e-pizzas',this)" aria-selected="false">Pizzas</button>
+        <button class="ctab" onclick="ctab('e-plats',this)" aria-selected="false">Plats & Pâtes</button>
+        <button class="ctab" onclick="ctab('e-desserts',this)" aria-selected="false">Desserts</button>
+      </div>
+
+      <div class="cpanel on" id="e-menu">
+        <div class="menu-formule reveal">
+          <div class="formule-prix">25,50€</div>
+          <div class="formule-detail">Menu L'Entre 2 — Entrée + Plat + Dessert · Prix nets TTC<br>Tout fait maison · Label IGP Périgord</div>
+        </div>
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Entrées au choix</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Foie gras de canard</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tataki de magret de canard</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartare de saumon</div></div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Plats au choix</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Confit de canard, sauce cèpes</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Ravioles aux truffes et cèpes</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Côte de cochon sauce moutardée à l'ancienne</div></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Desserts au choix</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gâteau au chocolat</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gâteau aux noix</div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Prix nets TTC · Menu enfant 11,50€ : Tenders de poulet & frites ou Jambon blanc & frites + Gâteau au chocolat</p>
+      </div>
+
+      <div class="cpanel" id="e-entrees">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Entrées</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Assiette apéro du Périgord</div><div class="mi-desc">Jambon Noir du Périgord, rillettes, bloc de foie gras</div></div><div class="mi-price">17,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Foie gras de canard maison & chutney d'oignons</div></div><div class="mi-price">18,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Escalopes de foie gras de canard poêlées sur toasts et sauce framboise</div></div><div class="mi-price">18,00€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Grandes Salades</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade "L'Entre 2"</div><div class="mi-desc">Mesclun, burrata, jambon noir du Périgord, coppa du Périgord, tomates séchées, olives noires et huile de truffe</div></div><div class="mi-price">19,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Cabécou</div><div class="mi-desc">Mesclun, cabécou, miel, noix, tomates cerises et oignons rouges</div></div><div class="mi-price">15,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Végétarienne Gourmande</div><div class="mi-desc">Mesclun, tomates anciennes, poivrons marinés, tomates confites, carottes râpées, oignon frit, artichaut, noix et crème balsamique</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade Périgourdine Authentique</div><div class="mi-desc">Mesclun, tomates cerises, magret séché, gésiers d'oie confit, foie gras de canard, croûtons de pain</div></div><div class="mi-price">20,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Salade César revisitée</div><div class="mi-desc">Mesclun, crousti de poulet, croûtons de pain, copeaux de parmesan et sauce César</div></div><div class="mi-price">17,00€</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cpanel" id="e-pizzas">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Pizzas</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Margarita</div><div class="mi-desc">Sauce tomate, mozzarella fondante, olives noires et basilic</div></div><div class="mi-price">9,90€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Royale</div><div class="mi-desc">Sauce tomate, mozzarella, jambon blanc, champignons, œuf et olives</div></div><div class="mi-price">12,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Végétarienne</div><div class="mi-desc">Sauce tomate, mozzarella, poivrons croquants, champignons, artichauts, tomates fraîches, parmesan et oignons</div></div><div class="mi-price">14,90€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Quatre Fromages</div><div class="mi-desc">Base crème, mozzarella, roquefort, fromage de chèvre, tome aux noix et olives</div></div><div class="mi-price">15,50€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Spécialités Périgourdines</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Périgourdine</div><div class="mi-desc">Crème fraîche, mozzarella, magret séché, fromage de chèvre, miel et olives</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Sarladaise</div><div class="mi-desc">Sauce tomate, mozzarella, jambon noir du Périgord, tomates confites, roquette, burrata, huile de truffe et parmesan</div></div><div class="mi-price">19,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">La Truffe</div><div class="mi-desc">Crème de truffe, burrata, jambon noir du Périgord</div></div><div class="mi-price">19,50€</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cpanel" id="e-plats">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Pâtes Gourmandes</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Linguines Carbonara revisitées</div><div class="mi-desc">Linguines, pancetta, sauce crème parmesan, jaune œuf frais</div></div><div class="mi-price">16,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Ravioles aux truffes & cèpes, sauce crème truffée</div><div class="mi-desc">Ravioles farcies aux truffes et cèpes, crème de parmesan onctueuse parsemées de copeaux de truffes</div></div><div class="mi-price">19,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Linguines au saveur du Périgord</div><div class="mi-desc">Linguines sauce cèpes, tranches de magrets séchés</div></div><div class="mi-price">17,50€</div></div>
+            </div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Burgers (servis avec frites maison)</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Classique</div><div class="mi-desc">Steak haché, cheddar, tomates et mesclun</div></div><div class="mi-price">17,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Végétarien Gourmand</div><div class="mi-desc">Steak végétal, cheddar, tomate confite, chutney d'oignons, oignons frits, mesclun</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Le Sarladais Signature</div><div class="mi-desc">Effiloché de canard, tomme aux noix, chutney d'oignons, sauce cèpes, tomate fraîche et mesclun</div></div><div class="mi-price">19,00€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Plats & Viandes</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Entrecôte de bœuf</div><div class="mi-desc">Entrecôte de bœuf (env. 300g) grillée, sauce crème truffée, frites</div></div><div class="mi-price">25,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartine au fromage frais, avocat et saumon coupé au couteau mariné</div><div class="mi-desc">Filet de saumon rôti au four, sauce vierge aux agrumes</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartine Entre 2</div><div class="mi-desc">Tomate d'antan, burrata, jambon noir du Périgord, crème balsamique</div></div><div class="mi-price">17,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Magret de canard entier, sauce framboise</div><div class="mi-desc">Magret de canard entier grillé (env. 380g), sauce framboise, frites</div></div><div class="mi-price">24,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Côte de cochon grillée de Dordogne, sauce moutarde à l'ancienne</div><div class="mi-desc">Côte de cochon rustique grillée, sauce moutarde à l'ancienne, frites</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Confit de canard, sauce aux cèpes</div><div class="mi-desc">Cuisse de canard confit, sauce cèpes et frites</div></div><div class="mi-price">18,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Saumon rôti, sauce vierge aux agrumes</div><div class="mi-desc">Filet de saumon rôti au four, sauce vierge aux agrumes, frites</div></div><div class="mi-price">20,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tartare de saumon aux herbes fraîches</div><div class="mi-desc">Saumon coupé au couteau, mariné aux herbes fraîches et agrumes, frites</div></div><div class="mi-price">18,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Camembert rôti</div><div class="mi-desc">Camembert rôti au four, miel et thym, jambon noir du Périgord, frites</div></div><div class="mi-price">16,50€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Fish & Chips, sauce tartare</div><div class="mi-desc">Filet de poisson enrobé d'une panure croustillante, sauce tartare, frites</div></div><div class="mi-price">16,00€</div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Prix nets TTC</p>
+      </div>
+
+      <div class="cpanel" id="e-desserts">
+        <div class="menu-cols">
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Nos Desserts</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Fondant au chocolat cœur coulant</div><div class="mi-desc">Chocolat noir, cœur fondant, servi tiède avec crème anglaise</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gratin de fruits rouges au Sabayon</div><div class="mi-desc">Assortiment de fruits rouges, nappés d'un sabayon</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tiramisu "L'Entre 2"</div><div class="mi-desc">Crème mascarpone légère, biscuit imbibé au café et spéculoos</div></div><div class="mi-price">8,00€</div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gâteau aux noix</div><div class="mi-desc">Gâteaux aux noix avec une crème anglaise</div></div><div class="mi-price">8,00€</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="menu-sect">
+              <div class="menu-sect-t">Menu Enfant · 11,50€</div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Tenders de poulet & frites</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Jambon blanc & frites</div></div></div>
+              <div class="menu-item"><div class="mi-left"><div class="mi-name">Gâteau au chocolat</div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="menu-note">Prix nets TTC · Tout fait maison</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="gal-s" id="galerie-entre2">
+    <div class="gal-head container reveal">
+      <span class="lbl" style="display:block;text-align:center">En images</span>
+      <h2 class="titre" style="text-align:center">L'<em>ambiance</em> L'Entre 2</h2>
+    </div>
+    <div class="gal-grid gal-grid-10">
+      <div class="gi ge1"><img src="photos/entre2-gal1.jpg" alt="Poisson grillé sur planche, L'Entre 2 Sarlat" loading="lazy" width="818" height="600"></div>
+      <div class="gi ge2"><img src="photos/entre2-gal2.jpg" alt="Ravioles à la truffe crème parmesan, L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge3"><img src="photos/entre2-gal3.jpg" alt="Salade périgourdine foie gras magret, L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge4"><img src="photos/entre2-gal4.jpg" alt="Salade César revisitée, L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge5"><img src="photos/entre2-gal5.jpg" alt="Salade périgourdine L'Entre 2 Sarlat" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge6"><img src="photos/entre2-gal6.jpg" alt="Foie gras de canard mi-cuit maison, L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge7"><img src="photos/entre2-gal7.jpg" alt="Tartare de saumon aux herbes, L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge8"><img src="photos/entre2-gal8.jpg" alt="Deux salades gourmandes, L'Entre 2 Sarlat" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge9"><img src="photos/entre2-gal9.jpg" alt="Table en terrasse, plats L'Entre 2" loading="lazy" width="600" height="400"></div>
+      <div class="gi ge10"><img src="photos/entre2-gal10.jpg" alt="Restaurant L'Entre 2 Sarlat" loading="lazy" width="600" height="400"></div>
+    </div>
+  </section>
+
+  <section class="infos-s" id="infos-entre2">
+    <div class="infos-grid">
+      <div class="reveal">
+        <div class="info-t">Nous trouver</div>
+        <address class="info-addr">21 Rue Albéric Cahuet<br>24200 Sarlat-la-Canéda<br>Dordogne · Périgord Noir</address>
+        <a href="tel:+33673274427" class="info-tel-big">06 73 27 44 27</a>
+        <div class="info-note">Réservations par téléphone ou Instagram</div>
+        <div class="info-email"><a href="https://www.instagram.com/l.entre2" target="_blank" rel="noopener noreferrer">@l.entre2 sur Instagram</a></div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2810.5!2d1.2166667!3d44.891667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ab47d8a30e6d79%3A0x9b6c2e4d!2s21+Rue+Alb%C3%A9ric+Cahuet%2C+24200+Sarlat-la-Can%C3%A9da!5e0!3m2!1sfr!2sfr!4v1680000000000" allowfullscreen loading="lazy" title="L'Entre 2 — 21 Rue Albéric Cahuet, Sarlat"></iframe>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="info-t">Horaires</div>
+        <ul class="hours">
+          <li><span class="jour">Lundi</span><span class="heure ferme">Fermé (hors saison)</span></li>
+          <li><span class="jour">Mar.–Sam.</span><span class="heure">Déjeuner & Dîner</span></li>
+          <li><span class="jour">Dimanche</span><span class="heure">Haute saison</span></li>
+          <li><span class="jour">Juil.–Août</span><span class="heure">7j/7 · Service non-stop</span></li>
+        </ul>
+        <p class="hours-note">Fermé 24 & 25 décembre. Horaires variables selon saison.</p>
+        <div class="moyens">
+          <span class="moyen">💳 CB</span><span class="moyen">🏖️ Ch. Vacances</span><span class="moyen">🍽️ Ticket Restaurant</span><span class="moyen">🐾 Animaux terrasse</span>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="info-t">Retrouvez-nous</div>
+        <div class="liens">
+          <a href="https://www.instagram.com/l.entre2" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">📸</div>@l.entre2 sur Instagram</a>
+          <a href="https://www.facebook.com/Lentre2sarlat/" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">f</div>Facebook — L'Entre 2</a>
+          <a href="https://maps.google.com/?q=Restaurant+L+Entre+2+Sarlat" target="_blank" rel="noopener noreferrer" class="lien"><div class="lien-icon">📍</div>Google Maps</a>
+        </div>
+        <div class="info-extras">
+          ☀️ 2 terrasses face à la cathédrale<br>
+          ♿ Accès PMR disponible<br>
+          🐾 Animaux bienvenus en terrasse<br>
+          👨‍👩‍👧 Groupes bienvenus · Menus dédiés<br>
+          🌿 Label IGP Périgord · Tout fait maison
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="qr-s" id="qr-entre2" aria-labelledby="qr-title-entre2">
+    <div class="qr-inner reveal">
+      <div class="qr-copy">
+        <span class="lbl">Accès direct</span>
+        <h2 class="titre" id="qr-title-entre2">Scannez le <em>QR officiel</em></h2>
+        <p class="texte">Accédez au site commun de L’Entre 2 et du Malraux pour consulter les cartes, les photos et les informations pratiques.</p>
+        <div class="qr-actions">
+          <a class="btn btn-gold" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer">Ouvrir le site</a>
+          <button class="btn btn-ghost qr-share" type="button" onclick="shareOfficialSite(this)">Partager le lien</button>
+        </div>
+        <a class="qr-url" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer">restaurant-entre2malraux.fr</a>
+      </div>
+      <a class="qr-card" href="https://restaurant-entre2malraux.fr/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site officiel L'Entre 2 et Le Malraux">
+        <span class="qr-kicker">Scannez ici</span>
+        <img src="qr-site.png" alt="QR code vers le site officiel restaurant-entre2malraux.fr" width="900" height="900">
+        <span class="qr-note">QR cliquable · Site officiel</span>
+      </a>
+    </div>
+  </section>
+
+
+  <section class="cta-s">
+    <div class="cta-inner reveal">
+      <span class="lbl" style="display:block;text-align:center">Souvent complet</span>
+      <h2 class="titre" style="text-align:center">Réservez votre <em>table</em></h2>
+      <p class="texte" style="text-align:center;margin:0 auto">Nous vous conseillons de réserver à l'avance pour profiter pleinement de votre moment au cœur de la cité médiévale.</p>
+      <div class="cta-tel-wrap">
+        <span class="cta-tel-lbl">Appelez-nous</span>
+        <a href="tel:+33673274427" class="cta-tel-num">06 73 27 44 27</a>
+        <span class="cta-sub">ou contactez-nous sur Instagram @l.entre2</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bridge-s">
+    <div class="bridge-inner reveal">
+      <div class="bridge-eyelet">Juste en face · même rue</div>
+      <div class="bridge-title">Envie d'une cuisine <em>gastronomique</em> ?</div>
+      <button class="bridge-card" onclick="switchSite('malraux')" aria-label="Découvrir Le Malraux">
+        <div class="bridge-card-label">Découvrir aussi</div>
+        <div class="bridge-card-name">Le Malraux</div>
+        <div class="bridge-card-sub">Gastronomie périgourdine traditionnelle</div>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-grid">
+      <div>
+        <span class="f-logo">L'Entre 2</span>
+        <span class="f-sub">Restaurant · Brasserie · Pizzeria · Sarlat</span>
+        <p class="f-bio">Cuisine du Périgord, pizzas artisanales et grande brasserie face à la cathédrale Saint-Sacerdos de Sarlat-la-Canéda. Tout fait maison, label IGP Périgord.</p>
+      </div>
+      <div class="f-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#about-entre2">L'adresse</a></li>
+          <li><a href="#carte-entre2">La carte</a></li>
+          <li><a href="#galerie-entre2">Galerie</a></li>
+          <li><a href="#infos-entre2">Infos pratiques</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Contact</h5>
+        <p>21 Rue Albéric Cahuet<br>24200 Sarlat-la-Canéda<br><br><a href="tel:+33673274427">06 73 27 44 27</a><br><a href="https://www.instagram.com/l.entre2" target="_blank" rel="noopener noreferrer">@l.entre2 Instagram</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-copy">© 2025 Restaurant L'Entre 2 · Sarlat-la-Canéda · Prix nets TTC</p>
+      <div class="f-socials">
+        <a href="https://www.instagram.com/l.entre2" target="_blank" rel="noopener noreferrer" class="f-soc" aria-label="Instagram L'Entre 2">📸</a>
+        <a href="https://www.facebook.com/Lentre2sarlat/" target="_blank" rel="noopener noreferrer" class="f-soc" aria-label="Facebook L'Entre 2">f</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
