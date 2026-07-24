@@ -14,6 +14,53 @@ document.querySelectorAll('img[src="qr-site.png"]').forEach(img=>{
   img.height=1672;
 });
 
+// Bande-annonce commune : lecture uniquement à la demande, sans son automatique.
+const clipStyle=document.createElement('style');
+clipStyle.textContent=`
+  .clip-sarlat{padding:clamp(72px,9vw,125px) 0;background:linear-gradient(145deg,#fffaf0 0%,#f1dfbd 100%);border-top:1px solid rgba(117,80,31,.22);border-bottom:1px solid rgba(117,80,31,.22)}
+  .clip-inner{width:min(1120px,calc(100% - 40px));margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:clamp(34px,7vw,90px)}
+  .clip-copy .titre{margin-bottom:1rem}.clip-copy .texte{margin-bottom:1.6rem}
+  .clip-badge{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .85rem;border:1px solid rgba(117,80,31,.22);border-radius:999px;background:rgba(255,255,255,.62);color:#76501f;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .clip-frame{position:relative;width:min(430px,100%);margin:0 auto;padding:11px;background:#211d17;border:1px solid rgba(173,120,46,.58);border-radius:28px;box-shadow:0 22px 55px rgba(70,51,26,.22)}
+  .clip-video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:19px;background:#211d17}
+  .clip-note{margin-top:.8rem;text-align:center;color:#625646;font-size:.82rem}
+  @media(max-width:820px){.clip-inner{grid-template-columns:1fr;text-align:center}.clip-copy .texte{margin-left:auto;margin-right:auto}.clip-badge{justify-content:center}.clip-frame{width:min(390px,92vw)}}
+`;
+document.head.appendChild(clipStyle);
+
+function installClip(which){
+  const target=document.querySelector('#page-'+which+' .carte-s');
+  if(!target||document.getElementById('clip-'+which))return;
+  const section=document.createElement('section');
+  section.className='clip-sarlat reveal';
+  section.id='clip-'+which;
+  section.setAttribute('aria-labelledby','clip-title-'+which);
+  section.innerHTML=`
+    <div class="clip-inner">
+      <div class="clip-copy">
+        <span class="lbl">Sarlat en images</span>
+        <h2 class="titre" id="clip-title-${which}">Découvrez nos <em>deux adresses</em></h2>
+        <p class="texte">L’Entre 2 et Le Malraux : terrasse, cuisine et ambiance au cœur du Périgord Noir.</p>
+        <span class="clip-badge">▶ Film de présentation · 25 secondes</span>
+        <p class="clip-note">La musique démarre seulement lorsque vous lancez la vidéo.</p>
+      </div>
+      <div class="clip-frame">
+        <video class="clip-video" controls playsinline preload="metadata" poster="carte-entre2.png" aria-label="Film de présentation de L’Entre 2 et du Malraux à Sarlat">
+          <source src="DIAPORAMA_SARLAT_MUSIQUE_THEME.mp4" type="video/mp4">
+          Votre navigateur ne permet pas la lecture de cette vidéo.
+        </video>
+      </div>
+    </div>`;
+  target.before(section);
+}
+['malraux','entre2'].forEach(installClip);
+
+document.querySelectorAll('.clip-video').forEach(video=>{
+  video.addEventListener('play',()=>{
+    document.querySelectorAll('.clip-video').forEach(other=>{if(other!==video)other.pause();});
+  });
+});
+
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>80),{passive:true});
 document.querySelectorAll('.land-half').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')el.click();});});
@@ -21,6 +68,7 @@ function enterSite(which){document.getElementById('landing').classList.add('gone
 let currentSite='malraux';
 function switchSite(which){
   if(which===currentSite)return;
+  document.querySelectorAll('.clip-video').forEach(video=>video.pause());
   currentSite=which;
   document.getElementById('body').className=which;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
