@@ -5,6 +5,15 @@ document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.styl
 document.addEventListener('mouseleave',()=>{cur.style.opacity='0';cuf.style.opacity='0';});
 document.addEventListener('mouseenter',()=>{cur.style.opacity='1';cuf.style.opacity='1';});
 document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('hov');cuf.classList.add('hov');});el.addEventListener('mouseleave',()=>{cur.classList.remove('hov');cuf.classList.remove('hov');});});
+
+// Affiche la carte de visite DIGIYLYFE à la place de l'ancien QR isolé.
+document.querySelectorAll('img[src="qr-site.png"]').forEach(img=>{
+  img.src='carte-entre2.png';
+  img.alt="Carte de visite DIGIYLYFE de L'Entre 2 et du Malraux";
+  img.width=941;
+  img.height=1672;
+});
+
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>80),{passive:true});
 document.querySelectorAll('.land-half').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')el.click();});});
