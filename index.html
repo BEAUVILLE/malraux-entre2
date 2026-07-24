@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -65,10 +64,10 @@
     <span class="nav-sub" id="nav-sub">Restaurant Traditionnel · Sarlat</span>
   </a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about" onclick="scrollTo(event,'about')">L'adresse</a></li>
-    <li><a href="#carte" onclick="scrollTo(event,'carte')">La carte</a></li>
-    <li><a href="#galerie" onclick="scrollTo(event,'galerie')">Galerie</a></li>
-    <li><a href="#infos" onclick="scrollTo(event,'infos')">Infos</a></li>
+    <li><a href="#about" data-section="about">L'adresse</a></li>
+    <li><a href="#carte" data-section="carte">La carte</a></li>
+    <li><a href="#galerie" data-section="galerie">Galerie</a></li>
+    <li><a href="#infos" data-section="infos">Infos</a></li>
   </ul>
   <a href="tel:+33642160657" class="nav-tel" id="nav-tel">06 42 16 06 57</a>
   <button class="burger" id="burgerBtn" onclick="document.getElementById('drawer').classList.add('open')" aria-label="Menu mobile" aria-expanded="false">
@@ -78,10 +77,10 @@
 
 <nav class="drawer" id="drawer" aria-label="Menu mobile">
   <button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open')" aria-label="Fermer">✕</button>
-  <a href="#about" onclick="scrollTo(event,'about');document.getElementById('drawer').classList.remove('open')">L'adresse</a>
-  <a href="#carte" onclick="scrollTo(event,'carte');document.getElementById('drawer').classList.remove('open')">La carte</a>
-  <a href="#galerie" onclick="scrollTo(event,'galerie');document.getElementById('drawer').classList.remove('open')">Galerie</a>
-  <a href="#infos" onclick="scrollTo(event,'infos');document.getElementById('drawer').classList.remove('open')">Infos</a>
+  <a href="#about" data-section="about" data-close-drawer="true">L'adresse</a>
+  <a href="#carte" data-section="carte" data-close-drawer="true">La carte</a>
+  <a href="#galerie" data-section="galerie" data-close-drawer="true">Galerie</a>
+  <a href="#infos" data-section="infos" data-close-drawer="true">Infos</a>
 </nav>
 
 <!-- ══ PAGE MALRAUX ══ -->
@@ -97,7 +96,7 @@
       <div class="h-orn" aria-hidden="true"><span></span><i></i><span></span></div>
       <div class="h-btns">
         <a href="tel:+33642160657" class="btn btn-gold">Réserver — 06 42 16 06 57</a>
-        <a href="#carte" class="btn btn-ghost" onclick="scrollTo(event,'carte')">Voir la carte</a>
+        <a href="#carte" class="btn btn-ghost" data-section="carte">Voir la carte</a>
       </div>
     </div>
     <div class="h-scroll" aria-hidden="true">Découvrir</div>
@@ -111,7 +110,7 @@
     <div class="bi"><div class="bi-val">Traiteur</div><div class="bi-lbl">Événements & groupes</div></div>
   </div>
 
-  <section class="about" id="about">
+  <section class="about" id="about-malraux">
     <div class="container">
       <div class="about-grid reveal">
         <div class="about-imgs">
@@ -138,7 +137,7 @@
   </section>
 
   <!-- CARTE LE MALRAUX — menus réels issus du PDF -->
-  <section class="carte-s" id="carte">
+  <section class="carte-s" id="carte-malraux">
     <div class="container">
       <div class="carte-head reveal">
         <span class="lbl" style="display:block;text-align:center">Nos saveurs</span>
@@ -341,7 +340,7 @@
     </div>
   </section>
 
-  <section class="gal-s" id="galerie">
+  <section class="gal-s" id="galerie-malraux">
     <div class="gal-head container reveal">
       <span class="lbl" style="display:block;text-align:center">En images</span>
       <h2 class="titre" style="text-align:center">L'<em>ambiance</em> Malraux</h2>
@@ -355,7 +354,7 @@
     </div>
   </section>
 
-  <section class="infos-s" id="infos">
+  <section class="infos-s" id="infos-malraux">
     <div class="infos-grid">
       <div class="reveal">
         <div class="info-t">Nous trouver</div>
@@ -436,10 +435,10 @@
       <div class="f-col">
         <h5>Navigation</h5>
         <ul>
-          <li><a href="#about" onclick="scrollTo(event,'about')">L'adresse</a></li>
-          <li><a href="#carte" onclick="scrollTo(event,'carte')">La carte</a></li>
-          <li><a href="#galerie" onclick="scrollTo(event,'galerie')">Galerie</a></li>
-          <li><a href="#infos" onclick="scrollTo(event,'infos')">Infos pratiques</a></li>
+          <li><a href="#about" data-section="about">L'adresse</a></li>
+          <li><a href="#carte" data-section="carte">La carte</a></li>
+          <li><a href="#galerie" data-section="galerie">Galerie</a></li>
+          <li><a href="#infos" data-section="infos">Infos pratiques</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -471,7 +470,7 @@
       <div class="h-orn" aria-hidden="true"><span></span><i></i><span></span></div>
       <div class="h-btns">
         <a href="tel:+33673274427" class="btn btn-gold">Réserver — 06 73 27 44 27</a>
-        <a href="#carte-e" class="btn btn-ghost" onclick="scrollTo(event,'carte-e')">Voir la carte</a>
+        <a href="#carte-e" class="btn btn-ghost" data-section="carte">Voir la carte</a>
       </div>
     </div>
     <div class="h-scroll" aria-hidden="true">Découvrir</div>
@@ -485,7 +484,7 @@
     <div class="bi"><div class="bi-val">7j/7 en été</div><div class="bi-lbl">Service non-stop</div></div>
   </div>
 
-  <section class="about" id="about">
+  <section class="about" id="about-entre2">
     <div class="container">
       <div class="about-grid about-text-first reveal">
         <div>
@@ -512,7 +511,7 @@
   </section>
 
   <!-- CARTE L'ENTRE 2 — menus réels issus du PDF -->
-  <section class="carte-s" id="carte-e">
+  <section class="carte-s" id="carte-entre2">
     <div class="container">
       <div class="carte-head reveal">
         <span class="lbl" style="display:block;text-align:center">Nos créations</span>
@@ -663,7 +662,7 @@
     </div>
   </section>
 
-  <section class="gal-s" id="galerie">
+  <section class="gal-s" id="galerie-entre2">
     <div class="gal-head container reveal">
       <span class="lbl" style="display:block;text-align:center">En images</span>
       <h2 class="titre" style="text-align:center">L'<em>ambiance</em> L'Entre 2</h2>
@@ -682,7 +681,7 @@
     </div>
   </section>
 
-  <section class="infos-s" id="infos">
+  <section class="infos-s" id="infos-entre2">
     <div class="infos-grid">
       <div class="reveal">
         <div class="info-t">Nous trouver</div>
@@ -760,10 +759,10 @@
       <div class="f-col">
         <h5>Navigation</h5>
         <ul>
-          <li><a href="#about" onclick="scrollTo(event,'about')">L'adresse</a></li>
-          <li><a href="#carte-e" onclick="scrollTo(event,'carte-e')">La carte</a></li>
-          <li><a href="#galerie" onclick="scrollTo(event,'galerie')">Galerie</a></li>
-          <li><a href="#infos" onclick="scrollTo(event,'infos')">Infos pratiques</a></li>
+          <li><a href="#about" data-section="about">L'adresse</a></li>
+          <li><a href="#carte-e" data-section="carte">La carte</a></li>
+          <li><a href="#galerie" data-section="galerie">Galerie</a></li>
+          <li><a href="#infos" data-section="infos">Infos pratiques</a></li>
         </ul>
       </div>
       <div class="f-col">
