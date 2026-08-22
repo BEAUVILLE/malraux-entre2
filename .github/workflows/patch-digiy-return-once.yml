@@ -34,3 +34,4 @@ jobs:
           git add index.html
           git commit -m "UI: add visible DIGIYLYFE.COM return on Malraux Entre2" || exit 0
           git push
+
