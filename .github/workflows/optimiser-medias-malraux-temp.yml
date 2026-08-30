@@ -1,0 +1,92 @@
+name: Optimiser medias Malraux Entre2 temporaire
+
+on:
+  push:
+    paths:
+      - '.github/workflows/optimiser-medias-malraux-temp.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimiser:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Installer convertisseurs
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y webp libavif-bin
+      - name: Convertir photos et carte
+        run: |
+          set -euo pipefail
+          mkdir -p media
+          for f in photos/*.jpg; do
+            base="${f%.jpg}"
+            cwebp -quiet -q 82 "$f" -o "${base}.webp"
+            avifenc --min 28 --max 35 --speed 6 "$f" "${base}.avif" >/dev/null
+          done
+          cwebp -quiet -q 82 carte-entre2.png -o media/carte-entre2.webp
+          avifenc --min 28 --max 35 --speed 6 carte-entre2.png media/carte-entre2.avif >/dev/null
+          python3 - <<'PY'
+          from pathlib import Path
+          orig=sum(p.stat().st_size for p in Path('photos').glob('*.jpg'))
+          webp=sum(p.stat().st_size for p in Path('photos').glob('*.webp'))
+          avif=sum(p.stat().st_size for p in Path('photos').glob('*.avif'))
+          print(f'PHOTOS JPG={orig} WEBP={webp} AVIF={avif}')
+          for f in ['carte-entre2.png','media/carte-entre2.webp','media/carte-entre2.avif','DIAPORAMA_SARLAT_MUSIQUE_THEME.mp4']:
+              p=Path(f); print(f'{f}={p.stat().st_size} bytes')
+          PY
+      - name: Basculer HTML CSS et video
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          # HTML: images de galerie => picture, lazy sauf si deja explicite.
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          pat=re.compile(r'<img(?P<a>[^>]*?)src=["\'](?P<src>photos/[^"\']+\.jpg)["\'](?P<b>[^>]*)>',re.I)
+          def repl(m):
+              src=m.group('src'); base=src[:-4]
+              attrs=(m.group('a')+m.group('b')).strip()
+              if 'loading=' not in attrs: attrs += ' loading="lazy"'
+              if 'decoding=' not in attrs: attrs += ' decoding="async"'
+              img=f'<img {attrs.strip()} src="{src}">'
+              return f'<picture><source type="image/avif" srcset="{base}.avif"><source type="image/webp" srcset="{base}.webp">{img}</picture>'
+          s=pat.sub(repl,s)
+          # Si la carte est presente directement dans le HTML, servir les formats modernes.
+          cardpat=re.compile(r'<img(?P<a>[^>]*?)src=["\']carte-entre2\.png["\'](?P<b>[^>]*)>',re.I)
+          def cardrepl(m):
+              attrs=(m.group('a')+m.group('b')).strip()
+              if 'decoding=' not in attrs: attrs += ' decoding="async"'
+              return f'<picture><source type="image/avif" srcset="media/carte-entre2.avif"><source type="image/webp" srcset="media/carte-entre2.webp"><img {attrs.strip()} src="carte-entre2.png"></picture>'
+          s=cardpat.sub(cardrepl,s)
+          p.write_text(s,encoding='utf-8')
+
+          # CSS: fallback JPG puis image-set AVIF/WebP/JPG pour landing + hero.
+          p=Path('style.css'); css=p.read_text(encoding='utf-8')
+          patcss=re.compile(r"background-image:\s*url\('(?P<src>photos/[^']+\.jpg)'\);")
+          def cssrepl(m):
+              src=m.group('src'); base=src[:-4]
+              return (f"background-image: url('{src}'); "
+                      f"background-image: image-set(url('{base}.avif') type('image/avif'), url('{base}.webp') type('image/webp'), url('{src}') type('image/jpeg'));")
+          css=patcss.sub(cssrepl,css)
+          p.write_text(css,encoding='utf-8')
+
+          # JS: la grande carte n'est plus chargee en PNG et la video n'amorce aucun octet avant clic.
+          p=Path('script.js'); js=p.read_text(encoding='utf-8')
+          js=js.replace("img.src='carte-entre2.png';", "img.src='media/carte-entre2.webp';")
+          js=js.replace('preload="metadata" poster="carte-entre2.png"', 'preload="none" poster="media/carte-entre2.webp"')
+          p.write_text(js,encoding='utf-8')
+          PY
+      - name: Publier et nettoyer
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/optimiser-medias-malraux-temp.yml
+          git config user.name 'DIGIYLYFE Media Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add index.html style.css script.js photos media .github/workflows/optimiser-medias-malraux-temp.yml
+          git commit -m 'Media: optimiser Malraux et Entre 2'
+          git push origin main
