@@ -72,8 +72,8 @@ address { font-style: normal; }
 .land-half { position: relative; min-height: 100vh; overflow: hidden; isolation: isolate; }
 .land-half:focus-visible { outline: 4px solid var(--gold); outline-offset: -4px; }
 .land-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); transition: transform .8s ease; }
-#land-malraux .land-bg { background-image: url('photos/malraux-salle.jpg'); }
-#land-entre2 .land-bg { background-image: url('photos/entre2-terrasse.jpg'); }
+#land-malraux .land-bg { background-image: url('photos/malraux-salle.jpg'); background-image: image-set(url('photos/malraux-salle.avif') type('image/avif'), url('photos/malraux-salle.webp') type('image/webp'), url('photos/malraux-salle.jpg') type('image/jpeg')); }
+#land-entre2 .land-bg { background-image: url('photos/entre2-terrasse.jpg'); background-image: image-set(url('photos/entre2-terrasse.avif') type('image/avif'), url('photos/entre2-terrasse.webp') type('image/webp'), url('photos/entre2-terrasse.jpg') type('image/jpeg')); }
 .land-half:hover .land-bg { transform: scale(1.07); }
 .land-ov { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(35,28,20,.12), rgba(35,28,20,.76)); }
 .land-cnt { position: absolute; inset: auto 9% 9%; color: white; z-index: 2; }
@@ -138,8 +138,8 @@ address { font-style: normal; }
 /* HERO */
 .hero { position: relative; min-height: 100svh; display: grid; place-items: center; text-align: center; color: white; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
-#malraux-hero .hero-bg { background-image: url('photos/malraux-salle.jpg'); }
-#entre2-hero .hero-bg { background-image: url('photos/entre2-terrasse.jpg'); }
+#malraux-hero .hero-bg { background-image: url('photos/malraux-salle.jpg'); background-image: image-set(url('photos/malraux-salle.avif') type('image/avif'), url('photos/malraux-salle.webp') type('image/webp'), url('photos/malraux-salle.jpg') type('image/jpeg')); }
+#entre2-hero .hero-bg { background-image: url('photos/entre2-terrasse.jpg'); background-image: image-set(url('photos/entre2-terrasse.avif') type('image/avif'), url('photos/entre2-terrasse.webp') type('image/webp'), url('photos/entre2-terrasse.jpg') type('image/jpeg')); }
 .hero-ov { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,31,22,.25), rgba(45,32,18,.68)); }
 .grain { position: absolute; inset: 0; opacity: .12; background-image: radial-gradient(rgba(255,255,255,.8) .6px, transparent .6px); background-size: 5px 5px; }
 .hero-cnt { position: relative; z-index: 2; width: min(900px, 90vw); padding-top: 80px; }

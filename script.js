@@ -10,7 +10,7 @@ const officialUrl='https://malraux-entre2.digiylyfe.com/';
 
 // Affiche la carte DIGIYLYFE et aligne tous les clics vers la fiche officielle.
 document.querySelectorAll('img[src="qr-site.png"]').forEach(img=>{
-  img.src='carte-entre2.png';
+  img.src='media/carte-entre2.webp';
   img.alt="Carte de visite DIGIYLYFE de L'Entre 2 et du Malraux — touchez pour ouvrir la fiche";
   img.width=941;
   img.height=1672;
@@ -75,7 +75,7 @@ function installClip(which){
         <p class="clip-note">🔊 La musique et l’émotion démarrent avec votre clic.</p>
       </div>
       <div class="clip-frame">
-        <video class="clip-video" controls playsinline preload="metadata" poster="carte-entre2.png" aria-label="Film de présentation de L’Entre 2 et du Malraux à Sarlat">
+        <video class="clip-video" controls playsinline preload="none" poster="media/carte-entre2.webp" aria-label="Film de présentation de L’Entre 2 et du Malraux à Sarlat">
           <source src="DIAPORAMA_SARLAT_MUSIQUE_THEME.mp4" type="video/mp4">
           Votre navigateur ne permet pas la lecture de cette vidéo.
         </video>
