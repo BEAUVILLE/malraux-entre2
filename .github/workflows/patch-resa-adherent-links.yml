@@ -1,0 +1,41 @@
+name: Raccorder les accès adhérents RESA
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-resa-adherent-links.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Ajouter les accès séparés
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          m='<a href="tel:+33642160657" class="btn btn-gold">Réserver — 06 42 16 06 57</a>'
+          ma=m+'\n        <a href="https://resto.digiylyfe.com/resa-resto/gestion.html?site=le-malraux-sarlat" class="btn btn-ghost" rel="nofollow">Espace adhérent</a>'
+          if 'gestion.html?site=le-malraux-sarlat' not in s:
+              if m not in s: raise SystemExit('Bouton Malraux introuvable')
+              s=s.replace(m,ma,1)
+          e='<a href="tel:+33673274427" class="btn btn-gold">Réserver — 06 73 27 44 27</a>'
+          ea=e+'\n        <a href="https://resto.digiylyfe.com/resa-resto/gestion.html?site=entre2-sarlat" class="btn btn-ghost" rel="nofollow">Espace adhérent</a>'
+          if 'gestion.html?site=entre2-sarlat' not in s:
+              if e not in s: raise SystemExit('Bouton Entre 2 introuvable')
+              s=s.replace(e,ea,1)
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "DIGIY LYFE"
+          git config user.email "baptistejb24@gmail.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Poser les accès adhérents RESA séparés"
+          git push
