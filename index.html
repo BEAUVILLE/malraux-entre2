@@ -47,6 +47,56 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body class="malraux" id="body">
+<section id="digiyPwaVisible" aria-label="Installer Le Malraux & L’Entre 2" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:10000050;width:min(560px,calc(100vw - 24px));box-sizing:border-box;padding:10px;border:1px solid rgba(201,151,67,.68);border-radius:18px;background:rgba(255,255,255,.97);color:#111;box-shadow:0 12px 30px rgba(0,0,0,.22);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;">
+  <div style="font-size:12px;font-weight:1000;margin-bottom:8px;">📲 Le Malraux & L’Entre 2 · DIGIY PRO</div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;">
+    <button type="button" id="digiyPwaInstall" style="min-height:50px;padding:10px 14px;border-radius:999px;border:1px solid #c99743;background:linear-gradient(135deg,#fff1bd,#e6b94d,#22c55e);color:#07150f;font:1000 12px/1.2 system-ui;cursor:pointer;">Garder Malraux & Entre 2 sur mon téléphone</button>
+    <button type="button" id="digiyPwaShare" style="min-height:50px;padding:10px 16px;border-radius:999px;border:1px solid #c99743;background:#fff;color:#111;font:1000 12px/1.2 system-ui;cursor:pointer;">↗ Partager</button>
+  </div>
+  <small id="digiyPwaNote" style="display:block;margin-top:7px;font-size:10px;line-height:1.35;font-weight:800;opacity:.75;">Votre accès direct reste sous votre doigt.</small>
+</section>
+<script>
+(function(){
+  var install=document.getElementById('digiyPwaInstall');
+  var share=document.getElementById('digiyPwaShare');
+  var note=document.getElementById('digiyPwaNote');
+  var promptEvent=null;
+  var installed=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+  var ua=navigator.userAgent||'';
+  var isIOS=/iPad|iPhone|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  window.addEventListener('beforeinstallprompt',function(ev){
+    ev.preventDefault();
+    promptEvent=ev;
+    note.textContent='Installation prête : touchez le bouton.';
+  });
+  window.addEventListener('appinstalled',function(){
+    installed=true; promptEvent=null; install.disabled=true; note.textContent='Malraux & Entre 2 est installé sur cet appareil.';
+  });
+  install.addEventListener('click',function(){
+    if(installed){ note.textContent='Malraux & Entre 2 est déjà installé sur cet appareil.'; return; }
+    if(promptEvent){
+      var ev=promptEvent; promptEvent=null;
+      ev.prompt();
+      ev.userChoice.then(function(choice){
+        if(choice&&choice.outcome==='accepted'){installed=true;install.disabled=true;note.textContent='Malraux & Entre 2 est installé sur cet appareil.';}
+        else note.textContent='Installation annulée. Vous pouvez réessayer.';
+      }).catch(function(){note.textContent='Ouvrez le menu du navigateur puis « Installer l’application ».';});
+      return;
+    }
+    note.textContent=isIOS
+      ? 'Sur iPhone : Safari → Partager ⬆︎ → Ajouter à l’écran d’accueil.'
+      : 'Ouvrez le menu du navigateur puis « Installer l’application » ou « Ajouter à l’écran d’accueil ».';
+  });
+  share.addEventListener('click',async function(){
+    var url="https://malraux-entre2.digiylyfe.com/";
+    try{
+      if(navigator.share){await navigator.share({title:"Le Malraux & L’Entre 2",text:"Le Malraux & L’Entre 2 · DIGIYLYFE",url:url});return;}
+      if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(url);note.textContent='Lien copié. Vous pouvez le partager.';return;}
+    }catch(e){}
+    note.textContent=url;
+  });
+})();
+</script>
 
 <a href="https://digiylyfe.com/" aria-label="Retour DIGIYLYFE.COM" style="position:fixed;top:64px;left:12px;z-index:1000001;width:min(360px,calc(100vw - 24px));min-height:52px;display:flex;align-items:center;justify-content:center;padding:11px 18px;border:2px solid #c99743;border-radius:999px;background:#241d15;color:#fff;text-decoration:none;font:1000 15px/1.2 Arial,sans-serif;letter-spacing:.02em;box-shadow:0 10px 28px rgba(0,0,0,.34)">← RETOUR DIGIYLYFE.COM</a>
 
@@ -943,10 +993,6 @@
   window.DIGIY_setLanguage = applyLanguage;
 })();
 </script>
-
-
-<script id="digiy-member-pwa-config">window.DIGIY_MEMBER_PWA={enabled:true,name:"Le Malraux & L’Entre 2",finalUrl:"https://malraux-entre2.digiylyfe.com/",manifestUrl:"/manifest.webmanifest?v=20260918-v2",iconUrl:"https://digiylyfe.com/assets/pwa/digiy-fallback-192.png?v=20260918-v2"};</script>
-<script src="https://digiylyfe.com/assets/digiy-member-pwa-v1.js?v=20260918-v1"></script>
 </body>
 </html>
 
