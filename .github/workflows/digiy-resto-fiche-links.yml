@@ -1,0 +1,31 @@
+name: Sarlat restaurant fiche links
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'script.js'
+      - 'style.css'
+      - 'tests/digiy-resto-fiche-buttons.test.cjs'
+      - '.github/workflows/digiy-resto-fiche-links.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'script.js'
+      - 'style.css'
+      - 'tests/digiy-resto-fiche-buttons.test.cjs'
+permissions:
+  contents: read
+jobs:
+  test-resto-buttons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify restaurant-specific fiches and contact buttons
+        run: node --test tests/digiy-resto-fiche-buttons.test.cjs

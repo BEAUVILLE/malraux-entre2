@@ -153,6 +153,10 @@ address { font-style: normal; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .8rem 1.25rem; border-radius: 999px; font-weight: 800; }
 .btn-gold { background: var(--gold); color: white; }
 .btn-ghost { border: 1px solid rgba(255,255,255,.8); color: white; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); }
+/* Raccord DIGIY RESTO : fiche individuelle, distincte du site et du téléphone. */
+.btn-fiche { background:#fff6d8; color:#073f32; border:2px solid #d8ad46; font-weight:1000; text-align:center; text-decoration:none; }
+.btn-fiche:hover,.btn-fiche:focus-visible { background:#fff; outline:3px solid #d8ad46; outline-offset:2px; }
+
 .h-scroll { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 2; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; }
 
 /* BANDAU */

@@ -8,16 +8,16 @@ document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseent
 
 const officialUrl='https://malraux-entre2.digiylyfe.com/';
 
-// Affiche la carte DIGIYLYFE et aligne tous les clics vers la fiche officielle.
+// Le QR et la carte existants ouvrent le SITE COMMUN. Les nouvelles fiches individuelles DIGIY RESTO ont leurs propres boutons visibles.
 document.querySelectorAll('img[src="qr-site.png"]').forEach(img=>{
   img.src='media/carte-entre2.webp';
-  img.alt="Carte de visite DIGIYLYFE de L'Entre 2 et du Malraux — touchez pour ouvrir la fiche";
+  img.alt="Carte de visite DIGIYLYFE de L'Entre 2 et du Malraux — touchez pour ouvrir le site commun";
   img.width=941;
   img.height=1672;
 });
 document.querySelectorAll('.qr-card').forEach(card=>{
   card.href=officialUrl;
-  card.setAttribute('aria-label',"Touchez la carte ou le QR pour ouvrir la fiche L'Entre 2 et Le Malraux");
+  card.setAttribute('aria-label',"Touchez la carte ou le QR pour ouvrir le site commun L'Entre 2 et Le Malraux");
   const note=card.querySelector('.qr-note');
   if(note) note.textContent='SUR TÉLÉPHONE : TOUCHEZ LA CARTE · SUR PAPIER : SCANNEZ LE QR';
 });
@@ -27,7 +27,7 @@ document.querySelectorAll('.qr-url').forEach(link=>{
 });
 document.querySelectorAll('.qr-actions .btn-gold').forEach(link=>{
   link.href=officialUrl;
-  link.textContent='Ouvrir la fiche DIGIYLYFE';
+  link.textContent='Ouvrir le site commun';
 });
 
 // Bande-annonce commune : appel à l'action fort, lisible et tactile sur téléphone.
