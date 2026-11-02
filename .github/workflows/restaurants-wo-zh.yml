@@ -1,0 +1,17 @@
+name: Le Malraux et L'Entre 2 — menu WO 中文
+on:
+  pull_request:
+    paths:
+      - index.html
+      - assets/digiy-resto-wo-zh-pack.js
+      - tests/test_restaurants_wo_zh.py
+      - .github/workflows/restaurants-wo-zh.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 344 menu strings, price integrity and JavaScript
+        run: python3 -m unittest discover -s tests -p 'test_restaurants_wo_zh.py' -v
