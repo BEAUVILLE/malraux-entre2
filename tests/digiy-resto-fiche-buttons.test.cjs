@@ -39,3 +39,21 @@ test('each restaurant has a different valid fiche URL',()=>{
  assert.notEqual(restaurants[0].fiche,restaurants[1].fiche);
  assert.ok(restaurants.every(x=>x.fiche.startsWith('https://resto.digiylyfe.com/fiche-')));
 });
+
+
+test('menu QR public séparé pour chaque restaurant sur le site commun',()=>{
+ const urls={
+   malraux:'https://resto.digiylyfe.com/menu-qr.html?site=le-malraux-sarlat',
+   entre2:'https://resto.digiylyfe.com/menu-qr.html?site=entre2-sarlat'
+ };
+ for(const key of ['malraux','entre2']){
+   const other=key==='malraux'?'entre2':'malraux';
+   const section=sections[key];
+   assert.equal(section.split('href="'+urls[key]+'"').length-1,1);
+   assert.ok(!section.includes('href="'+urls[other]+'"'));
+   assert.match(section,/MENU QR · PLATS &amp; PRIX/);
+   assert.match(section,/target="_blank" rel="noopener noreferrer"/);
+   assert.ok(section.includes('href="#carte-'+key+'"'));
+ }
+ assert.notEqual(urls.malraux,urls.entre2);
+});
